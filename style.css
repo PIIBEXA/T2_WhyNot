@@ -8,11 +8,18 @@ h1 {
     margin-bottom: 10px;
 }
 
+header {
+    width: 100%;
+    display: inline-block;
+    align-items: center;     /* вертикальное выравнивание */
+    border: 1px solid black;
+}
+
 .calendar {
     display: grid;
     grid-template-columns: repeat(7,1fr);
     gap: 10px;
-    max-width: 800px;
+    /* max-width: 800px; */
 }
 
 .day {
@@ -43,12 +50,13 @@ h1 {
 
 .day.vac {
     background: #d6ecff;
-    border-color: #5bbcff;
+    border-color: #00bfff;
 }
 
 .type-selector {
     margin-top: 20px;
 }
+
 
 button {
     margin-right: 10px;
@@ -58,13 +66,9 @@ button {
     cursor: pointer;
 }
 
-.vac-btn {
-    background-color: pink;
-}
-
 .shift-btn { background: #9cff00; }
 .off-btn { background: #ddd; }
-.vac-btn { background: #5bbcff; color: white; }
+.vac-btn { background: #00bfff; color: white; }
 
 .modal {
     position: fixed;
@@ -92,4 +96,15 @@ button {
   margin-top: 15px;
   display: flex;
   justify-content: space-between;
+}
+
+.imt_t2 {
+    height: 100px;
+    display: block;
+    /* border: 1px solid black; */
+    /* float:left; */
+}
+
+.planner-header {
+    display:block;
 }

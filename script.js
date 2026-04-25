@@ -10,9 +10,14 @@ const modalDate = document.getElementById('modal-date');
 
 let activeDayElement = null;
 
-function setMode(newMode) {
+window.setMode = function(newMode) {
     mode = newMode;
+    console.log("mode:", mode);
 }
+
+document.querySelector('.shift-btn').addEventListener('click', () => setMode('shift'));
+document.querySelector('.off-btn').addEventListener('click', () => setMode('off'));
+document.querySelector('.vac-btn').addEventListener('click', () => setMode('vac'));
 
 function createCalendar(days = 30) {
     for (let i = 1; i <= days; i++) {
@@ -22,19 +27,27 @@ function createCalendar(days = 30) {
 
         day.addEventListener('click', () => {
             activeDayElement = day;
+            console.log(mode)
+            if (mode === 'shift') {
+                modal.classList.remove('hidden');
+                modalDate.innerText = `День ${i}`;
+            
+                startInput.value = '';
+                endInput.value = '';
+            }
 
-            modal.classList.remove('hidden');
-            modalDate.innerText = `День ${i}`;
-
-            startInput.value = '';
-            endInput.value = '';
+            activeDayElement.classList.remove('shift','off','vac');
+            activeDayElement.classList.add(mode);
+            
         });
 
         calendar.appendChild(day);
     }
 }
 
-saveBtn.addEventListener('click', () => {
+saveBtn.addEventListener('click', async () => {
+    console.log(mode)
+
     const start = startInput.value;
     const end = endInput.value;
 
@@ -43,11 +56,18 @@ saveBtn.addEventListener('click', () => {
         return;
     }
 
-    activeDayElement.classList.remove('shift','off','vacation');
-    activeDayElement.classList.add('shift');
+    activeDayElement.classList.remove('shift','off','vac');
+    activeDayElement.classList.add(mode);
+
+    // await saveToServer(
+    //     activeDayElement.innerText,
+    //     mode,
+    //     start,
+    //     end
+    // );
 
     activeDayElement.innerHTML = `
-        <div>${activeDayElement.dataset.day || activeDayElement.innerText}</div>
+        <div>${activeDayElement.innerText}</div>
         <small>${start} - ${end}</small>
     `;
 
@@ -55,9 +75,30 @@ saveBtn.addEventListener('click', () => {
 });
 
 closeBtn.addEventListener('click', () => {
+    activeDayElement.classList.remove('shift','off','vac');
     modal.classList.add('hidden');
 });
 
 
-console.log(modal, saveBtn, closeBtn);
+
+async function saveToServer(day, status, start, end) {
+    await fetch("http://localhost:8000/schedule", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            user_id: 1,
+            day: `2026-04-${String(day).padStart(2,'0')}`,
+            status: status,
+            meta: {
+                start,
+                end
+            }
+        })
+    });
+}
+
+
+// console.log(modal, saveBtn, closeBtn);
 createCalendar();
