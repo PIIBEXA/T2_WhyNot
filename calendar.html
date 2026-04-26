@@ -16,11 +16,21 @@
         </header>
         
         <h1>Смены</h1>
+        
         <div class="calendar" id="calendar"></div>
         <div class="type-selector">
-            <button class="shift-btn" onclick="setMode('shift')">Смена</button>
-            <button class="off-btn" onclick="setMode('off')">Отпуск</button>
-            <button class="vac-btn" onclick="setMode('vac')">Выходной</button>
+            <button class="shift-btn" onclick="setMode('shift')">
+                <img class="butimg" src="чемодан.png" alt="">
+                <span>Смена</span>
+            </button>
+            <button class="off-btn" onclick="setMode('off')">
+                <img class="butimg" id="kalendar" src="календарь с часиками.png" alt="">
+                <span>Отпуск</span>
+            </button>
+            <button class="vac-btn" onclick="setMode('vac')">
+                <img class="butimg" id="fly" src="самолет.png" alt="">
+                <span>Выходной</span>
+            </button>
         </div>
 
         <div id="modal" class="modal hidden">

@@ -12,7 +12,13 @@ header {
     width: 100%;
     display: inline-block;
     align-items: center;     /* вертикальное выравнивание */
-    border: 1px solid black;
+    /* border: 1px solid black; */
+}
+
+.planner {
+    display: flex;
+    align-items: center;     /* вертикальное выравнивание по центру */
+    gap: 20px; 
 }
 
 .calendar {
@@ -41,7 +47,7 @@ header {
 
 .day.shift {
     background: #eaffd6;
-    border-color: #9cff00;
+    border-color: #a7fc00;
 }
 
 .day.off {
@@ -55,6 +61,10 @@ header {
 
 .type-selector {
     margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 
@@ -66,9 +76,42 @@ button {
     cursor: pointer;
 }
 
-.shift-btn { background: #9cff00; }
-.off-btn { background: #ddd; }
-.vac-btn { background: #00bfff; color: white; }
+.shift-btn { 
+    position: relative;
+    height: 50px;
+    width: 150px;
+    justify-content: center;
+    display: inline-flex;
+    align-items: center;
+    background: #a7fc00;
+    font-size: 14px;
+}
+
+.shift-btn span {
+    text-align: center;
+}
+
+.off-btn { 
+    position: relative;
+    background: #ddd; height: 50px; width: 150px;
+    justify-content: center;
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.off-btn span {
+    text-align: center;
+}
+
+.vac-btn { 
+    position: relative;
+    background: #00bfff; color: white; height: 50px; width: 150px;
+    justify-content: center;
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+}
 
 .modal {
     position: fixed;
@@ -98,13 +141,39 @@ button {
   justify-content: space-between;
 }
 
-.imt_t2 {
-    height: 100px;
-    display: block;
-    /* border: 1px solid black; */
-    /* float:left; */
+.planner-header {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    gap: 5px;
+}
+.planner-header h1 {
+    margin: 0;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: left; 
 }
 
-.planner-header {
-    display:block;
+.date-range {
+    margin: 0;
+    font-size: 20px;
+    color: #666;
+    text-align: left;
 }
+
+.imt_t2 {
+    height: 100px;
+    width: auto;
+}
+
+.butimg {
+    height: 35px;
+    position: absolute;
+    left: 1px;
+}
+
+#kalendar {
+    left: 7px;
+    height: 40px;
+}
+
