@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Страница</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <div class="header-inner">
+                <div class="planner">
+                    <img src="t2_logo.png" alt="Фото" class="imt_t2">
+                    <div class="planner-header">
+                        <h1>ПЛАНИРОВАНИЕ СМЕН</h1>
+                        <div class="date-range">20 апреля — 5 мая</div>
+                    </div>
+                </div>
+
+                <button class="send">Отправить отчет</button>
+            </div>
+        </header>
+        <div class="shift-header">
+            <h1>Смены</h1>
+            <button class="clear">Очистить</button>
+        </div>
+        <div class="main-layout">
+            <div class="left-panel">
+                <div class="Calendar" id="calendar">
+                <h3>Апрель</h3>
+                <div class="calendar" id="calendar-april"></div>
+                <h3>Май</h3>
+                <div class="calendar" id="calendar-may"></div>
+            </div>
+                <div class="type-selector">
+                    <button class="shift-btn" onclick="setMode('shift')">
+                        <img class="butimg" src="чемодан.png" alt="">
+                        <span>Смена</span>
+                    </button>
+                    <button class="off-btn" onclick="setMode('off')">
+                        <img class="butimg" id="kalendar" src="календарь с часиками.png" alt="">
+                        <span>Отпуск</span>
+                    </button>
+                    <button class="vac-btn" onclick="setMode('vac')">
+                        <img class="butimg" id="fly" src="самолет.png" alt="">
+                        <span>Выходной</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="right-panel">
+                <div class="user-info">
+                    <div class="name"></div>
+                    <div class="id"></div>
+                </div>
+
+                <div class="number-days">
+                    <h3>Выбранные дни</h3>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="modal" class="modal hidden">
+            <div class="modal-content">
+                <h3 id="modal-date">День</h3>
+
+                <label>От:</label>
+                <input type="time" id="startTime">
+
+                <label>До:</label>
+                <input type="time" id="endTime">
+
+                <div class="modal-actions">
+                    <button id="saveBtn">Сохранить</button>
+                    <button id="closeBtn">Отмена</button>
+                </div>
+            </div>
+        </div>
+        <script src="script.js" defer></script>
+    </body>
+</html>
+    
